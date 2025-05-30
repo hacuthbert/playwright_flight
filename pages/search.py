@@ -2,7 +2,6 @@ from playwright.sync_api import Page
 
 
 class SearchPage:
-    URL = "https://blazedemo.com/"
 
     def __init__(self, page: Page) -> None:
         self.page = page
@@ -10,8 +9,8 @@ class SearchPage:
         self.destination_city = page.locator('select[name="toPort"]')
         self.search_button = page.get_by_role("button", name="Find Flights")
 
-    def load(self) -> None:
-        self.page.goto(self.URL)
+    def load(self, URL: str) -> None:
+        self.page.goto(URL)
 
     def search(self, departure_city: str, destination_city: str) -> None:
         self.departure_city.select_option(departure_city)

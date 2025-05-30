@@ -1,7 +1,7 @@
 from pages.search import SearchPage
 from pages.reserve import ReservePage
 from pages.purchase import PurchasePage
-from playwright.sync_api import expect, Page
+from playwright.sync_api import Page
 
 
 def test_book_flight(
@@ -10,7 +10,8 @@ def test_book_flight(
     reserve_page: ReservePage,
     purchase_page: PurchasePage,
 ) -> None:
-    search_page.load()
+    URL = "https://blazedemo.com/"
+    search_page.load(URL)
     search_page.search("Boston", "London")
     reserve_page.reserve_flight()
     purchase_page.purchase_flight()
